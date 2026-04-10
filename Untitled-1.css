@@ -183,7 +183,7 @@
     .profile-role{ color:var(--muted); font-weight:600; font-size:13px }
 
     /* =========================
-       Sections
+       Sections (About, Schedule, Contact)
        ========================= */
     section{
       margin-bottom:28px;
@@ -200,9 +200,13 @@
     .section-title{ font-weight:800; font-size:18px; letter-spacing:0.6px }
     .section-sub{ color:var(--muted); font-size:13px }
 
+    /* About */
     .about p{ margin:0; color: #DCE9F8; line-height:1.7; font-size:15px }
 
-    .schedule{ display:flex;flex-direction:column;gap:12px; }
+    /* Schedule cards / timeline */
+    .schedule{
+      display:flex;flex-direction:column;gap:12px;
+    }
     .sched-card{
       display:flex;gap:14px; align-items:center; padding:14px;
       border-radius:12px; background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
@@ -219,6 +223,7 @@
     .sched-title{ font-weight:700; color:#fff; }
     .sched-desc{ color:var(--muted); font-weight:600; font-size:14px }
 
+    /* Contact */
     .contacts{ display:flex; gap:12px; flex-wrap:wrap }
     .contact-btn{
       display:inline-flex;align-items:center;gap:12px;padding:12px 14px;border-radius:12px;
@@ -232,11 +237,24 @@
       background:rgba(255,255,255,0.03); color:#fff; font-weight:800;
     }
 
+    /* =========================
+       Footer
+       ========================= */
     footer{ color:var(--muted); font-size:13px; text-align:center; padding:28px 8px; }
 
+    /* =========================
+       Responsive
+       ========================= */
     @media (max-width:960px){
       .hero{ grid-template-columns: 1fr; }
       .hero-right{ order:-1; margin-bottom:12px }
+      .avatar{ width:140px;height:140px }
+    }
+
+    @media (max-width:420px){
+      .name{ font-size:28px }
+      .avatar{ width:120px;height:120px }
+      body{ padding:18px }
     }
   </style>
 </head>
@@ -250,6 +268,7 @@
           <div style="font-size:12px;color:var(--muted);margin-top:2px">Mahasiswa · Sistem Informasi</div>
         </div>
       </a>
+
       <nav aria-label="Main navigation">
         <a href="#about">Tentang</a>
         <a href="#schedule">Jadwal</a>
@@ -260,89 +279,179 @@
     <main id="hero" class="hero">
       <div class="hero-left">
         <div class="intro-meta">Halo, saya</div>
+
         <h1 class="name" aria-label="ZUHRI ABDUSSALAM ASHARI">
           <span id="typeName" class="typewriter" aria-hidden="true"></span>
         </h1>
+
         <div class="subtitle">
           MAHASISWA SISTEM INFORMASI · UNIVERSITAS KOMPUTAMA MAJENANG
         </div>
+
         <div class="cta-row">
           <a class="btn btn--accent" href="#contact">Hubungi Saya</a>
           <a class="btn" href="#about">Tentang Saya</a>
         </div>
+
+        <div style="margin-top:18px;color:var(--muted);font-size:13px;">
+          Saya fokus menjembatani kebutuhan operasional dengan solusi perangkat lunak yang andal — dari aplikasi hingga integrasi IoT.
+        </div>
       </div>
 
       <aside class="hero-right">
-        <div class="profile-card">
-          <div class="avatar">
-            <img src="1000136383.jpg" alt="Zuhri Abdussalam Ashari">
+        <div class="profile-card" aria-label="Profil">
+          <div class="avatar" role="img" aria-hidden="false">
+            <img src="https://lh3.googleusercontent.com/d/1XgXU1hT7w3Iu0T-2N866k58-Fh5F9-L-" alt="Foto Zuhri Abdussalam Ashari">
           </div>
+
           <div style="text-align:center">
             <div class="profile-name">ZUHRI ABDUSSALAM ASHARI</div>
             <div class="profile-role">MAHASISWA SISTEM INFORMASI</div>
           </div>
+
           <div style="display:flex;gap:8px;margin-top:6px">
-            <a class="btn" href="mailto:tropiterbk1986@gmail.com">Email</a>
-            <a class="btn" href="https://wa.me/6283190268537">WA</a>
+            <a class="btn" href="#contact">Email</a>
+            <a class="btn" href="#schedule">Jadwal</a>
           </div>
         </div>
       </aside>
     </main>
 
-    <section id="about" data-animate>
-      <div class="section-title">Tentang Saya</div>
-      <p>Fokus saya adalah menjembatani kebutuhan operasional dengan solusi arsitektur perangkat lunak yang andal, mulai dari pengembangan aplikasi hingga integrasi Internet of Things (IoT).</p>
+    <section id="about" class="about" data-animate>
+      <div class="section-head">
+        <div>
+          <div class="section-title">Tentang Saya</div>
+          <div class="section-sub">Sekilas tentang pendekatan & fokus saya</div>
+        </div>
+      </div>
+
+      <p>
+        Sistem Informasi bukan hanya sekadar mempelajari teknologi, tetapi bagaimana teknologi tersebut dapat memecahkan masalah nyata dan menciptakan inovasi yang terukur. Fokus saya adalah menjembatani kebutuhan operasional dengan solusi arsitektur perangkat lunak yang andal, mulai dari pengembangan aplikasi hingga integrasi Internet of Things (IoT) untuk otomasi di berbagai sektor.
+      </p>
     </section>
 
     <section id="schedule" data-animate>
-      <div class="section-title">Jadwal Kuliah</div>
-      <div class="schedule">
-        <div class="sched-card">
-          <div class="sched-badge">Kuliah</div>
-          <div class="sched-body">
-            <div class="sched-title">Selasa - Jumat</div>
-            <div class="sched-desc">Pukul 07:00 - 12:00</div>
-          </div>
+      <div class="section-head">
+        <div>
+          <div class="section-title">Jadwal & Rutinitas</div>
+          <div class="section-sub">Ringkasan kegiatan kuliah</div>
         </div>
       </div>
+
+      <div class="schedule">
+        <div class="sched-card" role="listitem">
+          <div class="sched-badge">Kuliah</div>
+          <div class="sched-body">
+            <div class="sched-title">Jadwal Kuliah</div>
+            <div class="sched-desc">Selasa - Jumat, Pukul 07:00 - 12:00</div>
+          </div>
+        </div>
+
+        </div>
     </section>
 
     <section id="contact" data-animate>
-      <div class="section-title">Hubungi Saya</div>
+      <div class="section-head">
+        <div>
+          <div class="section-title">Hubungi Saya</div>
+          <div class="section-sub">Saya terbuka untuk diskusi, proyek, dan kolaborasi</div>
+        </div>
+      </div>
+
       <div class="contacts">
-        <a class="contact-btn" href="mailto:tropiterbk1986@gmail.com">
+        <a class="contact-btn" href="mailto:tropiterbk1986@gmail.com" aria-label="Kirim email ke tropiterbk1986@gmail.com">
           <div class="contact-icon">✉️</div>
-          <div>Email: tropiterbk1986@gmail.com</div>
+          <div>
+            <div style="font-weight:800">Email</div>
+            <div style="color:var(--muted);font-size:13px">tropiterbk1986@gmail.com</div>
+          </div>
+        </a>
+
+        <a class="contact-btn" href="https://wa.me/6283190268537" target="_blank" rel="noopener" aria-label="Chat WhatsApp ke 083190268537">
+          <div class="contact-icon">💬</div>
+          <div>
+            <div style="font-weight:800">WhatsApp</div>
+            <div style="color:var(--muted);font-size:13px">083190268537</div>
+          </div>
         </a>
       </div>
     </section>
 
     <footer>
-      © <span id="year"></span> Zuhri Abdussalam Ashari
+      © <span id="year"></span> Zuhri Abdussalam Ashari — Dibuat dengan perhatian pada desain & interaksi.
     </footer>
   </div>
 
   <script>
+    // ================
+    // Typewriter effect (name)
+    // ================
     (function(){
       const el = document.getElementById('typeName');
       const text = 'ZUHRI ABDUSSALAM ASHARI';
+      const speed = 60;
       let idx = 0;
+      let forward = true;
+
       function type(){
+        // show substring
         el.textContent = text.slice(0, idx);
-        idx++;
-        if(idx > text.length) idx = 0;
-        setTimeout(type, 100);
+        // increment
+        if(forward){
+          idx++;
+          if(idx > text.length){
+            forward = false;
+            setTimeout(type, 1000); // pause at end
+            return;
+          }
+        } else {
+          idx = 0;
+          forward = true;
+        }
+        setTimeout(type, speed);
       }
       type();
     })();
 
+    // ================
+    // Fade-in on scroll using IntersectionObserver
+    // ================
     (function(){
+      const opts = { root:null, rootMargin:'0px', threshold: 0.12 };
       const io = new IntersectionObserver((entries)=>{
-        entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in-view'); });
-      }, { threshold: 0.1 });
-      document.querySelectorAll('[data-animate]').forEach(el=> io.observe(el));
+        entries.forEach(e=>{
+          if(e.isIntersecting) {
+            e.target.classList.add('in-view');
+            io.unobserve(e.target);
+          }
+        });
+      }, opts);
+
+      document.querySelectorAll('[data-animate]').forEach(el=>{
+        io.observe(el);
+      });
+
+      // Also fade-in hero-left and hero-right for initial view
+      const heroLeft = document.querySelector('.hero-left');
+      const heroRight = document.querySelector('.hero-right');
+      setTimeout(()=>{ heroLeft && heroLeft.classList.add('in-view') }, 120);
+      setTimeout(()=>{ heroRight && heroRight.classList.add('in-view') }, 320);
     })();
-    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ================
+    // Small UI helpers
+    // ================
+    (function(){
+      // set current year in footer
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // smooth offset scrolling (if you want to offset a fixed header, adjust)
+      // Note: html { scroll-behavior: smooth } already applied for native smooth scroll
+      // Add keyboard focus outlines for accessibility
+      document.addEventListener('keyup', (e)=>{
+        if(e.key === 'Tab') document.body.style.outline = 'none';
+      });
+    })();
   </script>
 </body>
 </html>
